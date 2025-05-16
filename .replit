@@ -1,4 +1,4 @@
-run = "python3 -m flask run --host=0.0.0.0 --port=8080"
+run = "python smart_aix_server.py"
 language = "python3"
 
 [nix]
