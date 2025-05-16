@@ -1,9 +1,9 @@
 { pkgs }: {
     deps = [
-        pkgs.python310
+        pkgs.python3
+        pkgs.python3Packages.flask
+        pkgs.python3Packages.numpy
+        pkgs.python3Packages.pandas
+        pkgs.python3Packages.scikit-learn
     ];
-    env = {
-        PYTHONPATH = "${pkgs.python310}/bin/python3.10";
-        PIP_ROOT_USER_ACTION = "ignore";
-    };
 }
