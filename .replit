@@ -1,0 +1,18 @@
+run = "python3 -m flask run --host=0.0.0.0 --port=8080"
+language = "python3"
+entrypoint = "smart_aix_server.py"
+
+[nix]
+channel = "stable-22_11"
+
+[env]
+FLASK_APP = "smart_aix_server.py"
+FLASK_ENV = "production"
+
+[deployment]
+run = ["sh", "-c", "python3 -m flask run --host=0.0.0.0 --port=8080"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
