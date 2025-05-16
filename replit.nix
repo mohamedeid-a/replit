@@ -1,10 +1,9 @@
 { pkgs }: {
     deps = [
-        pkgs.python3
-        pkgs.python3Packages.pip
+        pkgs.python310
     ];
     env = {
-        PYTHONBIN = "${pkgs.python3}/bin/python3";
-        LANG = "en_US.UTF-8";
+        PYTHONPATH = "${pkgs.python310}/bin/python3.10";
+        PIP_ROOT_USER_ACTION = "ignore";
     };
 }
