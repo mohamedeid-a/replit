@@ -1,18 +1,10 @@
 { pkgs }: {
     deps = [
-        pkgs.python310Full
-        pkgs.python310Packages.pip
-        pkgs.python310Packages.flask
-        pkgs.python310Packages.numpy
-        pkgs.python310Packages.pandas
-        pkgs.python310Packages.scikitlearn
-        pkgs.python310Packages.joblib
-        pkgs.python310Packages.requests
-        pkgs.python310Packages.transformers
+        pkgs.python38
+        pkgs.python38Packages.pip
+        pkgs.python38Packages.flask
+        pkgs.python38Packages.numpy
+        pkgs.python38Packages.pandas
+        pkgs.python38Packages.scikit-learn
     ];
-    env = {
-        PYTHONPATH = "${pkgs.python310Full}/bin/python3.10";
-        LANG = "en_US.UTF-8";
-        PIP_ROOT_USER_ACTION = "ignore";
-    };
 }
