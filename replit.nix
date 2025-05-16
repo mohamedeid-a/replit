@@ -1,9 +1,12 @@
 { pkgs }: {
     deps = [
-        pkgs.python3
-        pkgs.python3Packages.flask
-        pkgs.python3Packages.numpy
-        pkgs.python3Packages.pandas
-        pkgs.python3Packages.scikit-learn
+        pkgs.python38Full
     ];
+    env = {
+        PYTHONHOME = "${pkgs.python38Full}";
+        PYTHONBIN = "${pkgs.python38Full}/bin/python3.8";
+        LANG = "en_US.UTF-8";
+        STDERRED_PATH = "${pkgs.stderred}/lib/libstderred.so";
+        PYTHONPATH = ".";
+    };
 }
