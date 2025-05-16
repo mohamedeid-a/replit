@@ -1,4 +1,4 @@
-run = "python -m flask run --host=0.0.0.0 --port=8080"
+run = "python smart_aix_server.py"
 language = "python3"
 entrypoint = "smart_aix_server.py"
 
@@ -6,11 +6,15 @@ entrypoint = "smart_aix_server.py"
 channel = "stable-22_11"
 
 [env]
-PYTHONPATH = "${PYTHONPATH}:${workspaceFolder}"
 FLASK_APP = "smart_aix_server.py"
 FLASK_ENV = "production"
 
 [deployment]
+run = ["sh", "-c", "python smart_aix_server.py"]
+
+[[ports]]
+localPort = 8080
+externalPort = 80
 run = ["sh", "-c", "pip install -r requirements.txt && python -m flask run --host=0.0.0.0 --port=8080"]
 deploymentTarget = "cloudrun"
 
