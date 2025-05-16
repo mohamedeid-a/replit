@@ -1,18 +1,29 @@
-run = "python3 -m flask run --host=0.0.0.0 --port=8080"
+run = "pip install -r requirements.txt && python smart_aix_server.py"
 language = "python3"
 entrypoint = "smart_aix_server.py"
 
 [nix]
-channel = "stable-22_11"
+channel = "stable-23_05"
 
 [env]
+PYTHONPATH = "${PYTHONPATH}:${workspaceFolder}"
 FLASK_APP = "smart_aix_server.py"
 FLASK_ENV = "production"
 
-[deployment]
-run = ["sh", "-c", "python3 -m flask run --host=0.0.0.0 --port=8080"]
-deploymentTarget = "cloudrun"
+[packager]
+language = "python3"
+ignoredPackages = ["unit_tests"]
 
-[[ports]]
-localPort = 8080
-externalPort = 80
+[packager.features]
+enabledForHosting = true
+packageSearch = true
+
+[unitTest]
+language = "python3"
+
+[languages.python3]
+pattern = "**/*.py"
+syntax = "python"
+
+[languages.python3.languageServer]
+start = "pylsp"
