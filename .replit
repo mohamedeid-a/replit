@@ -1,10 +1,24 @@
-run = "pip install flask numpy pandas scikit-learn joblib requests transformers torch && python smart_aix_server.py"
+run = "python3 -m flask run --host=0.0.0.0 --port=8080"
 language = "python3"
-entrypoint = "smart_aix_server.py"
-mainfile = "smart_aix_server.py"
 
 [nix]
-channel = "stable-22_11"
+channel = "stable-23_05"
 
 [env]
-PYTHONPATH = "${PYTHONPATH}:${workspaceFolder}"
+FLASK_APP = "smart_aix_server.py"
+FLASK_ENV = "production"
+
+[packager]
+language = "python3"
+ignoredPackages = ["unit_tests"]
+
+[packager.features]
+enabledForHosting = true
+packageSearch = true
+
+[languages.python3]
+pattern = "**/*.py"
+syntax = "python"
+
+[languages.python3.languageServer]
+start = "pylsp"
