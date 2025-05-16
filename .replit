@@ -1,4 +1,10 @@
-run = ["python3", "smart_aix_server.py"]
+run = "pip install flask numpy pandas scikit-learn joblib requests transformers torch && python smart_aix_server.py"
 language = "python3"
 entrypoint = "smart_aix_server.py"
 mainfile = "smart_aix_server.py"
+
+[nix]
+channel = "stable-22_11"
+
+[env]
+PYTHONPATH = "${PYTHONPATH}:${workspaceFolder}"
